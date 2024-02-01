@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""We consume APIs to extract fictitious information"""
 import requests
 from sys import argv
 
