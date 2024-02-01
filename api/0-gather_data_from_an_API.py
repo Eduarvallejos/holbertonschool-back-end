@@ -33,7 +33,7 @@ def api_data():
     else:
         print("Error:username not found.")
 
-    print(f"Employee {EMPLOYEE_NAME} is done with tasks"\
+    print(f"Employee {EMPLOYEE_NAME} is done with tasks"
           f"({NUMBER_OF_DONE_TASKS}/{TOTAL_NUMBER_OF_TASKS}):")
 
     # Print titles of completed tasks
