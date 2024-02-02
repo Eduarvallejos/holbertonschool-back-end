@@ -20,6 +20,14 @@ def api_data():
     user_url = f"https://jsonplaceholder.typicode.com/users/{user_ID}"
     users = requests.get(user_url)
 
+    """Check if the user's information request was successful"""
+    if users.status_code == 200:
+        user = users.json()
+        # Get the user's name
+        EMPLOYEE_NAME = user["name"]
+    else:
+        print("Error:username not found.")
+
     """Check if the task request was successful"""
     if response.status_code == 200:
         todos = response.json()
@@ -28,14 +36,6 @@ def api_data():
         TOTAL_NUMBER_OF_TASKS = len(todos)
     else:
         print("Error: Unable to get tasks. Please enter an existing user ID.")
-
-    """Check if the user's information request was successful"""
-    if users.status_code == 200:
-        user = users.json()
-        # Get the user's name
-        EMPLOYEE_NAME = user["name"]
-    else:
-        print("Error:username not found.")
 
     print(f"Employee {EMPLOYEE_NAME} is done with tasks"
           f"({NUMBER_OF_DONE_TASKS}/{TOTAL_NUMBER_OF_TASKS}):")
