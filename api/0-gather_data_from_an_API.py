@@ -6,7 +6,11 @@ from sys import argv
 
 def api_data():
     # Get the user ID from command line arguments
-    user_ID = int(argv[1])
+    if len(argv) > 1 and argv[1].isdigit():
+        user_ID = int(argv[1])
+
+    else:
+        return
 
     """Build the API URL to get user tasks"""
     api_url = f"https://jsonplaceholder.typicode.com/todos?userId={user_ID}"
