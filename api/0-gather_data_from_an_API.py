@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""We consume APIs to extract fictitious information"""
+"""We consume APIs to extract fictitious information."""
 import requests
 from sys import argv
 
 
 def api_data():
-    # Get the user ID from command line arguments
+    """We query the name and tasks of an employee."""
     if len(argv) > 1 and argv[1].isdigit():
         user_ID = int(argv[1])
 
