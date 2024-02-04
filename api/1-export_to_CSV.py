@@ -25,16 +25,14 @@ def api_data():
     if users.status_code == 200:
         user = users.json()
         # Get the user's name
-        EMPLOYEE_NAME = user["name"]
+        EMPLOYEE_NAME = user["username"]
     else:
         print("Error:username not found.")
 
     """Check if the task request was successful."""
     if response.status_code == 200:
         todos = response.json()
-        # Count the number of completed tasks and total tasks
-        NUMBER_OF_DONE_TASKS = sum(1 for todo in todos if todo['completed'])
-        TOTAL_NUMBER_OF_TASKS = len(todos)
+        
     else:
         print("Error: Unable to get tasks. Please enter an existing user ID.")
 
@@ -53,7 +51,7 @@ def api_data():
         for todo in todos:
             writer.writerow({
                 "USER_ID": USER_ID,
-                "USERNAME": user["username"],
+                "USERNAME": EMPLOYEE_NAME,
                 "TASK_COMPLETED_STATUS": todo["completed"],
                 "TASK_TITLE": todo["title"]
             })
