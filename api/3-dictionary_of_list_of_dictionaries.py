@@ -10,14 +10,14 @@ def api_data():
 
     # Dictionary to store tasks for all users
     employee_todos = {}
-    
-    for USER_ID in range(1, 11):
+
+    for USERID in range(1, 11):
         """Build the API URL to get user tasks."""
-        api_url = f"https://jsonplaceholder.typicode.com/todos?userId={USER_ID}"
+        api_url = f"https://jsonplaceholder.typicode.com/todos?userId={USERID}"
         response = requests.get(api_url)
 
         """Build the API URL to get user information"""
-        user_url = f"https://jsonplaceholder.typicode.com/users/{USER_ID}"
+        user_url = f"https://jsonplaceholder.typicode.com/users/{USERID}"
         users = requests.get(user_url)
         """Check if the user's information request was successful."""
         if users.status_code == 200:
@@ -32,12 +32,12 @@ def api_data():
         if response.status_code == 200:
             todos = response.json()
         else:
-            print("Error: Unable to get tasks. Please enter an existing user ID.")
+            print("Error: Please enter an existing user ID.")
             return
 
         """Collect information from all user tasks."""
         user_task = []
-            
+
         for todo in todos:
             task_info = {
                 "username": EMPLOYEE_NAME,
@@ -45,8 +45,8 @@ def api_data():
                 "completed": todo["completed"]
                 }
             user_task.append(task_info)
-                
-        employee_todos[str(USER_ID)]= user_task
+
+        employee_todos[str(USERID)] = user_task
 
         """Export data in the JSON format."""
         file_json = "todo_all_employees.json"
